@@ -1,13 +1,9 @@
-<template>
-  <section>
-    <h1>User page</h1>
-
-    <ul>
-      <li v-for="user of users" :key="user">
-        <a href="#" @click.prevent="goTo(user)">User {{user}}</a>
-      </li>
-    </ul>
-  </section>
+<template lang='pug'>
+  section
+    h1 User page
+    ul
+      li(v-for='user of users' :key='user')
+        a(href='#' @click.prevent='goTo(user)') User {{user}}
 </template>
 <script>
 export default {

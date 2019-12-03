@@ -1,5 +1,5 @@
-<template>
-  <h1>User {{$route.params.id}}</h1>
+<template lang='pug'>
+  h1 User {{$route.params.id}}
 </template>
 <script>
 export default {

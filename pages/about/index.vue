@@ -1,5 +1,4 @@
-<template>
-  <section>
-    <h1>About page</h1>
-  </section>
+<template lang="pug">
+  section
+    h1 About page
 </template>
