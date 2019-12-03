@@ -1,15 +1,26 @@
 <template lang='pug'>
   section
-    h1 User page
+    h1 {{pageTitle}}
     ul
       li(v-for='user of users' :key='user')
         a(href='#' @click.prevent='goTo(user)') User {{user}}
 </template>
 <script>
 export default {
-  data() {
-    return {users: [1, 2, 3, 4, 5]}
+  asyncData() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve({
+          users: [
+            1, 2, 3, 4, 5
+          ]
+        })
+      }, 3000)
+    })
   },
+  data: () => ({
+    pageTitle: 'User page'
+  }),
   methods: {
     goTo(user){   
       this.$router.push('/users/' + user)
