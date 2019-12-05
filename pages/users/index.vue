@@ -7,16 +7,13 @@
 </template>
 <script>
 export default {
-  asyncData({$axios, error}) {
-    return $axios.$get('https://jsonplaceholder.typicode.com/users')
-    .then(users => {
-      return {
-        users
-      }
-    })
-    .catch(err => {
-      error(err)
-    })
+  async asyncData({store, error}) {
+    try{
+      const users = await store.dispatch('users/fetchUsers')
+      return {users}
+    } catch (e){
+      error(e)
+    }
   },
   data: () => ({
     pageTitle: 'User page'
