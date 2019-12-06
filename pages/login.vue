@@ -1,5 +1,5 @@
 <template lang='pug'>
-  form
+  form(@submit.prevent='onSubmit')
     h1 Login
     .form-group
       input.form-control(type='text')
@@ -7,12 +7,18 @@
       input.form-control(type='password')
     p
       nuxt-link(to='/') Home
-    button.btn.btn-primary Login
+    button.btn.btn-primary(type='submit') Login
 </template>
 
 <script>
 export default {
-  layout: 'empty'
+  layout: 'empty',
+  methods:{
+    onSubmit(){
+      this.$store.dispatch('login')
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 

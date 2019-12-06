@@ -12,5 +12,22 @@
             nuxt-link.nav-link(no-prefetch='' to='/about') About
           li.nav-item
             nuxt-link.nav-link(no-prefetch='' to='/login') Login
+          li.nav-item(v-if='isAuth')
+            a.nav-link(href='#' @click.prevent='logout') Logout
 
 </template>
+
+<script>
+export default {
+  computed: {
+    isAuth(){
+      return this.$store.getters.isAuth
+    }
+  },
+  methods: {
+    logout(){
+      this.$store.dispatch('logout')
+    }
+  }
+}
+</script>
